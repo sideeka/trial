@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<html >
+<body style="background-color:#B6BB85;">
+    <img alt="Girl in a jacket" style="width:1100px;height:203px;" src="~/images/green 1.jpg" />
+
+
+<div class="text-center">
+        <h1 class="display-4" style="color:antiquewhite;">Welcome </h1>
+        <p style="color: antiquewhite;">Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+    <form asp-action="takename" method="post">
+    
+
+    <input type="text" id="name" name="name">
+    <button type="submit" onclick="alert(name)">Click Me!</button>
+
+
+    </form>
+   </body>
+</html>

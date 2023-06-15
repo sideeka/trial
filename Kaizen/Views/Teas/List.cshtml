@@ -1,0 +1,178 @@
+﻿@model IEnumerable<Kaizen.Models.Tea>
+
+    @*@model *@
+<html>
+<style>
+  /*  .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 40%;
+    }*/
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        flex-direction: column;
+        }
+
+    .container {
+        padding: 2px 16px;
+    }
+
+    .card {
+        flex-direction: column;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px; /* 5px rounded corners */
+        align-content:center
+
+    }
+
+    /* Add rounded corners to the top left and the top right corner of the image */
+    img {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .flip-card {
+        flex-direction: column;
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        border: 1px solid #f1f1f1;
+        border-radius: 5px; /* 5px rounded corners */
+        perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    }
+
+    /* This container is needed to position the front and back side */
+    .flip-card-inner {
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    /* Position the front and back side */
+    .flip-card-front, .flip-card-back {
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+    }
+
+    /* Style the front side (fallback if image is missing) */
+    .flip-card-front {
+        border-radius: 5px; /* 5px rounded corners */
+        background-color: #bbb;
+        color: black;
+    }
+
+    /* Style the back side */
+    .flip-card-back {
+        border-radius: 5px; /* 5px rounded corners */
+        background-color: dodgerblue;
+        color: white;
+        transform: rotateY(180deg);
+    }
+
+     button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+
+        .button:hover {
+            opacity: 0.7;
+        }
+</style>
+<head>
+
+        <meta charset="utf-8" />
+        <meta hhtp-equiv="X-UA-Compatible" content="IE-edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title> shoppe- sweets pty ltd - 2023</title>
+
+</head>
+<body>
+
+   <div><b>sweets from the sweet repository</b><br /></div>
+  @*  <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th>name </th>
+            <th>description </th>
+            <th>price </th>
+            <th>category</th>
+            <th>Pic</th>
+
+        </tr>
+
+        @foreach (var tea in Model)
+        {
+            <tr>
+                <td><a href="#">@tea.TeaName</a>
+            <td>@tea.TeaDescription</td>
+            <td>@tea.Tea_Stock</td>
+            <td>@tea.Price.ToString("c")</td>
+            <td>@tea.Season.SeasonName</td>
+
+
+            </td>
+                <h3>
+                    <a asp.asp-controller="Sweets" asp-action="Details"
+                   asp-route-id="@tea.TeaId">@tea.TeaName</a>
+                </h3>
+                
+                <p>@tea.TeaDescription</p>
+        </tr>
+    }
+    </table>*@
+
+
+    <div style="display:flex">
+        @foreach(var tea in Model)
+            {
+                  @* <div class="card">
+        <div class="container" >
+                <h4><b>@tea.TeaName</b></h4>
+                <p>@tea.TeaDescription</p>
+            </div>
+        </div>*@
+       
+<div class="flip-card"  >
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                    <h4><b>@tea.TeaName</b></h4>
+                        @*<img src="@Sweet.ImageUrl" alt="Image for sweet shop" width="160" height="100" />*@
+                        <img src="@tea.pic" alt="Avatar" style="width:200px;height:200px;">
+    
+</div>
+                <div class="flip-card-back">
+
+                    <p>@tea.TeaDescription</p>
+                        <p>
+                            <a asp-controller="Season" asp-action="List2"> yes</a>
+                            <button >Update Stock</button></p>
+                </div>
+        </div>
+            </div>
+       
+        }
+    </div>
+    
+</body>
+</html>

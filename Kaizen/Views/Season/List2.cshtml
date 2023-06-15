@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Kaizen.Models.Season>
+
+<style>
+
+    table, th, td {
+        border: 1px solid  blue;
+        border-collapse: collapse;
+        border-radius: 10px;
+    }
+
+    th, td {
+        background-color: yellowgreen;
+    }
+
+
+</style>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta hhtp-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title> shoppe- sweets pty ltd - 2023</title>
+
+</head>
+<body>
+
+    <h1>seasons for teas </h1>
+    <table class="table">
+        <tr>
+            <th style="text-align:center;">farmer name</th>
+            <th style="text-align:center;">farmer email</th>
+            <th style="text-align:center;">farmer phone number </th>
+            <th></th>
+        </tr>
+    @foreach (var season in Model)
+    {
+            <tr>
+                <th>
+                  @season.farmerName
+                </th>
+                <th>
+                   @season.farmerEmail
+                </th>
+                <th>
+                   @season.farmerPhoneNumber
+                </th>
+                <td>
+
+                    <a fdprocessedid="ite2ji" asp-action="Delete" asp-route-id="@season.SeasonId">Delete</a>
+                    @*<button type="button" class="btn btn-link" fdprocessedid="ite2ji" asp-action="Edit" asp-route-id="@season.SeasonId"> Edit</button>*@
+                    @*<button type="button" class="btn btn-link" fdprocessedid="ite2ji" asp-action="Details" asp-route-id="@season.SeasonId"> Details</button>*@
+                    @*<button type="button" class="btn btn-link" fdprocessedid="ite2ji" asp-action="Delete" asp-route-id="@season.SeasonId"> Delete</button>*@
+                    <button type="button" class="btn btn-link" fdprocessedid="ite2ji" asp-area="" asp-controller="Teas" asp-action="Details"> Details</button>
+
+                </td>
+                
+            </tr>
+    
+    }
+    </table>
+</body>
+</html>
